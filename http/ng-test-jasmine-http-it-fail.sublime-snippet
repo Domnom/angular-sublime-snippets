@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[
+it ("${1:Message}", () => {
+	
+	${2/(.+)/\l$1/g:Service Classname}.${3:function}()
+		.subscribe(
+			(resBody) => {
+				// -- Forcing a fail if this error is fired
+				expect(false).toBeTruthy();
+			},
+			(resError) => {
+				expect(resError).toBeTruthy();
+			}
+		);
+
+	var testRequest = httpCtrl.expectOne((req) => {
+
+		return req.url == ${4:Expected Url};
+
+	});
+
+	var fakeData = {
+
+	}
+	
+	var fakeOpts = {
+		status : ${5:Status code},
+		statusText : ${6:Status message},
+		headers : {}
+	}
+
+	testRequest.flush(fakeData);
+
+})
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-http-it-fail</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

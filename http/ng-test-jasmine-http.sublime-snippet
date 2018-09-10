@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+import { TestBed, inject } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ${1:Service Classname} } from '${2:Service Class path}';
+
+describe("${1:Service Classname}", () => {
+	
+	var rootUrl: string = "${3:Root url}";
+	var ${1/(.+)/\l$1/g:Service Classname}: ${1:Service Classname};
+	var httpCtrl: HttpTestingController;
+
+	/*
+		Additionals snippets:
+
+			providers:
+				- ng-test-jasmine-providers-http-interceptor
+					- Requires import { InterceptorClass } at the top
+					- Requires import { HTTP_INTERCEPTORS } from '@angular/common/http';
+	*/
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports : [HttpClientTestingModule],
+			providers : [
+				${1:Service Classname}
+			]
+		});
+
+		${1/(.+)/\l$1/g:Service Classname} = TestBed.get(${1:Service Classname});
+		httpCtrl = TestBed.get(HttpTestingController);
+	})
+
+	afterEach(() => {
+		httpCtrl.verify();
+	});
+
+	it ("Should be created", () => {
+		expect(${1/(.+)/\l$1/g:Service Classname}).toBeTruthy();
+	});
+
+});
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-http</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
