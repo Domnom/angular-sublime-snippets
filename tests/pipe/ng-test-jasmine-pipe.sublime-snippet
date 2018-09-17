@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+import { ${1:Pipe class} } from '${2:Pipe class location}';
+
+describe('${1:Pipe class}', () => {
+	
+	let pipe: ${1:Pipe class} = new ${1:Pipe class}();
+
+	describe("Success", () => {
+
+		it ("Should return transformed string", () => {
+			var pipeResult = pipe.transform("REPLACE_ME");
+			expect(pipeResult).toEqual("REPLACE_ME");
+		})
+
+	})
+
+	describe("Fail", () => {
+
+		it ("Should return null", () => {
+			var pipeResult = pipe.transform(null);
+			expect(pipeResult).toEqual(null);
+		})
+
+	})
+})
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-pipe</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

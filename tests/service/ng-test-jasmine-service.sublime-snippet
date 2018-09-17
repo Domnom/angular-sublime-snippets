@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+import { ${1:Service class} } from '${2:Service class location}';
+
+describe(${1:Service class}, () => {
+	
+	let service: ${1:Service class};
+
+	beforeEach(() => {
+		service = new ${1:Service class}();
+	})
+
+	describe("Success", () => {
+
+		it ("Should succeed", () => {
+			var value = service.${3:Service function success}
+			expect(value).toBeTruthy();
+		})
+
+	})
+
+	describe("Fail", () => {
+
+		it ("Should fail", () => {
+			var value = service.${4:Service function fail}
+			expect(value).toBeFalsy();
+		})
+
+	})
+
+})
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-service</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ${1:Component class} } from '${2:Component class location}';
+
+describe("${1:Component class}", () => {
+	let component: ${1:Component class};
+	let fixture: ComponentFixture<${1:Component class}>;
+
+	beforeEach(async(() => {
+	    TestBed.configureTestingModule({
+	        declarations: [ 
+	        	${1:Component class} 
+	        ],
+	        imports : [
+	            ReactiveFormsModule
+	        ]
+	    })
+	    .compileComponents();
+
+	    fixture = TestBed.createComponent(${1:Component class});
+	    fixture.detectChanges();
+	    component = fixture.componentInstance;
+    });
+
+    describe("Class variables", () => {
+
+    	it ("Should have all class variables", () => {
+    		expect(component.${3:Form group name}).toBeTruthy();
+    		expect(component.${3:Form group name}.value.${4:Form property}).toEqual(${5:Form property default value});
+    	})
+
+    })
+})
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-reactive-form</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

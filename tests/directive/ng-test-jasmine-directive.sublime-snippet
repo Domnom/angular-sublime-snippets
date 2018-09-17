@@ -1,0 +1,71 @@
+<snippet>
+	<content><![CDATA[
+import { Component } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+
+import { ${1:Directive class} } from '${2:directive class location}';
+
+/*
+	Using this component to fully test different ways to implement the directive without messing with our real code
+ */
+@Component({
+	template: `
+		<div ${3:Directive name}="${4:Directive attribute}">Directive with attribute</div>
+		<div ${3:Directive name}>Directive with no attribute</div>
+		<div>No directive</div>`
+})
+class MockTestComponent {}
+
+
+/*
+	Begin testing directive
+ */
+describe("${1:Directive class}", () => {
+	
+	let allDirectiveElements;
+	let fixture: ComponentFixture<MockTestComponent>;
+
+	beforeEach(async(() => {
+
+		TestBed.configureTestingModule({
+			declarations: [
+				${1:Directive class},
+				MockTestComponent
+			]
+		})
+		.compileComponents();
+		
+		// -- Create the component to save to a local var
+		fixture = TestBed.createComponent(MockTestComponent);
+
+		fixture.detectChanges();
+
+		// -- Create any element references
+		allDirectiveElements = fixture.debugElement.queryAll(By.directive(${1:Directive class}));
+
+	}));
+
+
+	it ("Should have 2 valid directives", () => {
+
+		expect(allDirectiveElements.length).toBe(2);
+
+	})
+
+	describe("Success", () => {
+
+	});
+
+	describe("Fail", () => {
+
+	});
+
+})
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ng-test-jasmine-directive</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
